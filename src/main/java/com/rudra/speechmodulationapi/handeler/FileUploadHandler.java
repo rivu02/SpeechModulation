@@ -88,7 +88,9 @@ public class FileUploadHandler {
             uploadFile.setCreatedAt(new Date());
 
             fileUploadService.uploadFile(uploadFile);
-            return new_file_name;
+            System.out.println("fh " +upload_path);
+            //return new_file_name;
+            return upload_path;
         }
         catch(Exception e){
             e.printStackTrace();
