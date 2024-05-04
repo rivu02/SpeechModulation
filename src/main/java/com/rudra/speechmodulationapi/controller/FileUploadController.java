@@ -1,6 +1,6 @@
 package com.rudra.speechmodulationapi.controller;
 import ch.qos.logback.core.net.SyslogOutputStream;
-import com.rudra.speechmodulationapi.entity.UploadFile;
+//import com.rudra.speechmodulationapi.entity.UploadFile;
 import com.rudra.speechmodulationapi.handeler.FileUploadHandler;
 import com.rudra.speechmodulationapi.service.FileUploadService;
 import jakarta.servlet.http.HttpServletResponse;

@@ -7,7 +7,7 @@ import java.util.Date;
 
 @Entity
 @Table(name="speech_modulation")
-public class UploadFile {
+public class Upload {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -19,7 +19,7 @@ public class UploadFile {
     @Column(name = "created_at", nullable = false, updatable = false)
     private Date createdAt;
 
-    public UploadFile(Long id, String fileName, String filePath, Date createdAt) {
+    public Upload(Long id, String fileName, String filePath, Date createdAt) {
         this.id = id;
         this.fileName = fileName;
         this.filePath = filePath;
@@ -68,6 +68,6 @@ public class UploadFile {
         this.createdAt = createdAt;
     }
 
-    public UploadFile() {
+    public Upload() {
     }
 }
