@@ -68,12 +68,16 @@ public class FileUploadController {
     public String givenPythonScript_whenPythonProcessInvoked_thenSuccess(String fPath) throws Exception {
         String path = "";
         String home = System.getProperty("user.home");
-        String pythonScriptPath = home+ File.separator+"Desktop"+ File.separator+ "untitled folder" + File.separator+ "asr_demo1.py";
-
+        System.out.println(fPath+"fpath");
+        System.out.println(home+"home");
+        String pythonScriptPath = home+ File.separator+"Desktop" + File.separator+ "asr_demo1.py";
+        System.out.println(pythonScriptPath);
         // Prepare the command to execute the Python script
         //String arg1="/Users/rivu/Desktop/untitled folder/test5.wav";
-        String arg1=home+ File.separator+ "Downloads"+ File.separator+ "speech-modulation-api" + File.separator+fPath;
-
+//        String arg1=home+ File.separator+ "Downloads"+ File.separator+ "speech-modulation-api" + File.separator+fPath;
+//        C:\Users\monis\Desktop\Java-Spring\SpeechModulation\files
+        String arg1=home+File.separator+"Desktop"+File.separator+"Java-Spring"+File.separator+"SpeechModulation"+File.separator+fPath;
+        System.out.println(arg1);
         String[] command = {"python3", pythonScriptPath, arg1};
 
         try {
@@ -81,17 +85,21 @@ public class FileUploadController {
             ProcessBuilder pb = new ProcessBuilder(command);
             Process process = pb.start();
 
+            pb.redirectErrorStream(true); // Redirect error stream to input stream
+
             // Optional: If you want to read the Python script's output, you can do so here
             InputStream inputStream = process.getInputStream();
             BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
             String line;
+            System.out.println(reader.readLine());
             while ((line = reader.readLine()) != null) {
                 path+=line;
                 System.out.println(line);
             }
 
-            // Wait for the process to complete
-            int exitCode = process.waitFor();
+    int exitCode = process.waitFor();
+
+
 
             // Check the exit code to determine if the execution was successful
             if (exitCode == 0) {

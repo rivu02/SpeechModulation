@@ -1,6 +1,7 @@
 package com.rudra.speechmodulationapi.handeler;
 
 //import com.rudra.speechmodulationapi.entity.UploadFile;
+import com.rudra.speechmodulationapi.entity.Upload;
 import com.rudra.speechmodulationapi.service.FileUploadService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -76,18 +77,18 @@ public class FileUploadHandler {
 //        Instant timestamp = Instant.now();
 
         String new_file_name = "AUD-" + uniqueID +"." + extension;
-        String upload_path=UPLOAD_DIR+new_file_name;
+        String upload_path=UPLOAD_DIR+File.separator+new_file_name;
 
         System.out.println(new_file_name);
         try{
             Files.copy(f.getInputStream(), Path.of(upload_path), StandardCopyOption.REPLACE_EXISTING);
 
-//            UploadFile uploadFile=new UploadFile();
-//            uploadFile.setFileName(new_file_name);
-//            uploadFile.setFilePath(upload_path);
-//            uploadFile.setCreatedAt(new Date());
-//
-//            fileUploadService.uploadFile(uploadFile);
+            Upload uploadFile=new Upload();
+            uploadFile.setFileName(new_file_name);
+            uploadFile.setFilePath(upload_path);
+            uploadFile.setCreatedAt(new Date());
+
+            fileUploadService.uploadFile(uploadFile);
             System.out.println("fh " +upload_path);
             //return new_file_name;
             return upload_path;
